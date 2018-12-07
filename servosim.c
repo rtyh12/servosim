@@ -21,7 +21,7 @@ void update(float dt) {
 
 void display() {
     for (int i = 0; i < 6; i++) {
-        printf("[%i] %4i  [", i, actualPos[i]);
+        printf(" [%i]  %4i  [", i, actualPos[i] + 1000);
         int displayPos = actualPos[i] * screen_width / max;
         for (int j = 0; j < displayPos; j++)
             putchar('=');
