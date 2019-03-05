@@ -5,6 +5,9 @@
 // boilerplate, on the microcontroller these are provided by the avr standard library
 
 typedef unsigned short uint16_t;
+typedef short int16_t;
+typedef unsigned int uint32_t;
+typedef int int32_t;
 
 
 
@@ -18,5 +21,10 @@ void display();
 // if they dont its cause im dum
 void multiSetServo(unsigned nr, unsigned z);
 void _delay_ms(unsigned short t);
+
+void uartInit();
+void ADCInit(int a);
+void timerInit();
+void multiServoInit();
 
 #endif

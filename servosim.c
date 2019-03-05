@@ -30,17 +30,19 @@ void display() {
         char fg = 'H';
         char fg_hit = '$';
 
-    for (int i = 0; i < 6; i++) {        
+        float zoom = 3;
+
+    for (int i = 0; i < 6; i++) {
         printf(" [%i]  %4i  [", i, actualPos[i] + 1000);
-        int displayPos = actualPos[i] * screen_width / max;
+        int displayPos = (actualPos[i] * screen_width / max);
 
         for (int j = 0; j < displayPos; j++)
-            abs((int) actualPos[i] - 500) > 20 ? putchar(bg) : putchar(bg_hit);
+            abs((int) actualPos[i] - 500) > 5 ? putchar(bg) : putchar(bg_hit);
 
-        abs((int) actualPos[i] - 500) > 20 ? putchar(fg) : putchar(fg_hit);
+        abs((int) actualPos[i] - 500) > 5 ? putchar(fg) : putchar(fg_hit);
 
         for (int j = 0; j < screen_width - displayPos; j++)
-            abs((int) actualPos[i] - 500) > 20 ? putchar(bg) : putchar(bg_hit);
+            abs((int) actualPos[i] - 500) > 5 ? putchar(bg) : putchar(bg_hit);
             
         printf("]\n");
     }
@@ -54,5 +56,12 @@ void multiSetServo(unsigned nr, unsigned z) {
 
 
 void _delay_ms(unsigned short t) {
-    usleep(t * 1000);
+    // this multiplicative constant is a magic number that should in theory be 1000,
+    // but that didn't quite match the speed of the real servos.
+    usleep(t * 990);
 };
+
+void uartInit() {}
+void ADCInit(int a) {}
+void timerInit() {}
+void multiServoInit() {}
